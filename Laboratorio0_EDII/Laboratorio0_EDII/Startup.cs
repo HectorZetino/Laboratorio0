@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 
 namespace Laboratorio0_EDII
 {
@@ -25,7 +26,13 @@ namespace Laboratorio0_EDII
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
             services.AddControllers();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Laboratorio0_EDII", Version = "v1", });
+                c.IncludeXmlComments(string.Format(@"{0}\laboratorio0_EDII.XML", baseDirectory));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,6 +42,15 @@ namespace Laboratorio0_EDII
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "TestService");
+            });
+
+
 
             app.UseHttpsRedirection();
 

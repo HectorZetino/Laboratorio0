@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -31,7 +33,9 @@ namespace Laboratorio0_EDII
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Laboratorio0_EDII", Version = "v1", });
-                c.IncludeXmlComments(string.Format(@"{0}\laboratorio0_EDII.XML", baseDirectory));
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
             });
         }
 
@@ -49,8 +53,6 @@ namespace Laboratorio0_EDII
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "TestService");
             });
-
-
 
             app.UseHttpsRedirection();
 

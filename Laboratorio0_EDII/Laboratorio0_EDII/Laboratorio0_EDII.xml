@@ -10,5 +10,49 @@
             </summary>
             <param name="NewMovie">Nueva pelicula ingresada</param>
         </member>
+        <member name="M:Laboratorio0_EDII.Controllers.ApiController.GetMovies">
+            <summary>
+            Metodo que devulve la lista de datos almacenada
+            </summary>
+        </member>
+        <member name="M:Laboratorio0_EDII.Controllers.ApiController.GetCompleteMovies">
+            <summary>
+            Metodo que retorna la lista completa de peliculas ingresadas.
+            </summary>
+            <returns>Retorna toda la lista de Movies</returns>
+        </member>
+        <member name="M:Laboratorio0_EDII.Metods.MoviesMethods.ReceiveData(Laboratorio0_EDII.Models.Movie)">
+            <summary>
+            Metodo para almacenar los valores 
+            </summary>
+            <param name="NewMovie"></param>
+        </member>
+        <member name="M:Laboratorio0_EDII.Metods.MoviesMethods.ReturnData">
+            <summary>
+            metodo para retornar los valores
+            </summary>
+            <returns>Retorna unicamente los 10 valores de la lista</returns>
+        </member>
+        <member name="M:Laboratorio0_EDII.Metods.MoviesMethods.ReturnCompleteList">
+            <summary>
+            Metodo que devuelve todos los datos sin excepcion 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Laboratorio0_EDII.Models.Movie.Name_Movie">
+            <summary>
+            Nombre de la Pelicula
+            </summary>
+        </member>
+        <member name="P:Laboratorio0_EDII.Models.Movie.Year_Movie">
+            <summary>
+            Año de la pelicula
+            </summary>
+        </member>
+        <member name="P:Laboratorio0_EDII.Models.Movie.Director_Movie">
+            <summary>
+            Director de la pelicula
+            </summary>
+        </member>
     </members>
 </doc>
